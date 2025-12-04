@@ -1,4 +1,4 @@
-import React, { use, useEffect,useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import ChatMessage from './ChatMessage'
 import { useDispatch } from 'react-redux';
 import { addMessage } from '../utils/chatSlice';
@@ -14,8 +14,9 @@ useEffect(() => {
  const i =  setInterval(() => {
     //Api Polling
     console.log("Polling Api...");
-    dispatch(addMessage({name:generate(), message:makeRandomMessage(15)}))
+    dispatch(addMessage({name:generate(), message:makeRandomMessage()}))
   }, 1500);
+ 
   return () => clearInterval(i);
 }, [])
 

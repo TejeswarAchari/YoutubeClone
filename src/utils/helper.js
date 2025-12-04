@@ -1,6 +1,4 @@
-// Source - https://stackoverflow.com/q
-// Posted by EMILO, modified by community. See post 'Timeline' for change history
-// Retrieved 2025-11-07, License - CC BY-SA 4.0
+
 
 var nameList = [
   // Boys
@@ -28,7 +26,7 @@ var nameList = [
   'Bhavani', 'Preethi', 'Rani', 'Suhasini', 'Vaishnavi', 'Kavya', 'Niharika',
   'Anitha', 'Kusuma', 'Alekhya', 'Meena', 'Radha', 'Pavani', 'Revathi',
   'Malathi', 'Indu', 'Sowjanya', 'SriLekha', 'Harshita', 'Sita', 'Gowri',
-  'Aaradhya', 'Sruthi', 'Padma', 'Tulasi', 'Chaitra','anusha',,'anusha','anusha','anusha','anusha','anusha',
+  'Aaradhya', 'Sruthi', 'Padma', 'Tulasi', 'Chaitra','anusha','anusha','anusha','anusha','anusha','anusha',
 
   // Unisex / Modern Nicknames
   'Teju', 'Lucky', 'Cherry', 'Bunny', 'Vicky', 'Chaitu', 'Ajju', 'Sandy',
@@ -44,9 +42,6 @@ var finalName = nameList[Math.floor(Math.random() * nameList.length)];
       return finalName;
     };
 
-// Source - https://stackoverflow.com/a
-// Posted by csharptest.net, modified by community. See post 'Timeline' for change history
-// Retrieved 2025-11-07, License - CC BY-SA 4.0
 
 export function makeRandomMessage() {
   const openings = [
@@ -91,4 +86,6 @@ export function makeRandomMessage() {
   // pick random pattern
   return patterns.random()();
 }
+
+
 

@@ -1,13 +1,13 @@
 
 import './App.css';
-import Head from './components/Head';
 import Body from './components/Body';
 import { Provider } from 'react-redux';
 import store from './utils/store';
 import Maincontainer from './components/Maincontainer';
 import WatchPage from './components/WatchPage';
-import { createBrowserRouter, Route, Router, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SearchResultsPage from './components/SearchResultsPage';
+
 const appRouter = createBrowserRouter([
 {
   path:'/',

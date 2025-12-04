@@ -17,3 +17,5 @@ export const LIVE_CHAT_COUNT=23;
 export const YOUTUBE_SEARCH_RESULTS_API="https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&key="+ GOOGLE_API_KEY +"&q=";
 
 
+export const YOUTUBE_RELATED_VIDEOS_API ="https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=18&regionCode=IN&key="+ GOOGLE_API_KEY;
+
