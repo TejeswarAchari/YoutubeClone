@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# 🎬 YouTube Clone – React + Redux + Tailwind
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![YouTube API](https://img.shields.io/badge/YouTube_API-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-## Available Scripts
+> A high-performance YouTube-style video streaming application built with React, Redux Toolkit, Tailwind CSS, and the YouTube Data API.
 
-In the project directory, you can run:
+This project features a fully responsive UI, live chat simulation, optimized search functionality with debouncing, and recursive threaded comments.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📑 Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture Highlights](#-architecture-highlights)
+- [Project Structure](#-project-structure)
+- [Routing](#-routing-overview)
+- [Getting Started](#-getting-started)
+- [Contributing](#-contributing)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Features
 
-### `npm run build`
+| Feature | Description |
+| :--- | :--- |
+| **🔍 Smart Search** | Debounced search input + API-based suggestions + Dedicated search results page to minimize API calls. |
+| **🧭 Nested Routing** | Persistent header/sidebar architecture with page-level dynamic content using React Router's `<Outlet />`. |
+| **🆚 Dynamic Sidebar** | Global sidebar state managed via Redux (`toggleMenu`, `openMenu`, `closeMenu`) for smooth transitions. |
+| **📺 Watch Page** | Full video player (iframe) integration, complete with recommendation lists, comments, and live chat. |
+| **💬 Live Chat** | Simulation of high-frequency live data using `setInterval` polling (New messages every 1.5s). |
+| **🧵 Threaded Comments** | Advanced N-level deep comments implemented using Recursive Component Rendering. |
+| **⚡ Performance** | Shimmer UI / Skeleton screens implemented for better user experience during data fetching. |
+| **📱 Responsive Design** | Mobile-first approach with sticky headers and adaptive grid layouts using Tailwind CSS. |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Frontend
+* **React** (Hooks, Functional Components)
+* **JavaScript** (ES6+)
+* **create-react-app**
 
-### `npm run eject`
+### Styling
+* **Tailwind CSS** (Utility-first framework)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### State Management
+* **Redux Toolkit** (Slices, Store)
+* **React-Redux**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Routing
+* **React Router DOM** (v6+)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### APIs
+* **YouTube Data API v3**
+* **Google Suggest API**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧠 Architecture Highlights
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Optimization via Debouncing
+* **Search keystrokes are debounced (200ms delay)** to drastically reduce API calls to the suggestion engine.
+* Results are **cached in a Redux slice** to prevent re-fetching the same query multiple times.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. Live Chat Simulation
+* Uses **API polling (`setInterval`)** to simulate a live socket connection.
+* Manages the DOM size by **removing old chat messages** as new ones arrive to prevent memory leaks and browser lag.
 
-### Code Splitting
+### 3. Recursive Components
+* The "Comments" section utilizes a **recursive structure** to handle nested replies of infinite depth efficiently.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 4. Lazy Loading
+* Components and heavy assets are **lazy-loaded** to improve the Initial Contentful Paint (ICP) score.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📂 Project Structure
 
-### Making a Progressive Web App
+```bash
+src/
+├── components/          # Reusable UI components and Pages
+│   ├── Head.js         # Navigation Bar
+│   ├── Sidebar.js      # Collapsible Sidebar
+│   ├── VideoContainer.js
+│   ├── WatchPage.js
+│   └── ...
+├── utils/               # Helper functions and State
+│   ├── appStore.js     # Redux Store configuration
+│   ├── chatSlice.js    # Chat data logic
+│   ├── searchSlice.js  # Caching logic
+│   └── constants.js    # API Keys and URLs
+├── App.js               # Main Layout & Router Provider
+└── index.js             # Entry Point
+```
+🔗 Routing OverviewRouteComponentDescription/MainContainerThe home feed displaying popular videos./watch?v=:idWatchPageThe video player, live chat, and comments section./results?q=:querySearchResultsLists videos matching the user's search query.📦 Getting StartedFollow these steps to set up the project locally.1. Clone the repositoryBashgit clone [https://github.com/your-username/youtube-clone.git](https://github.com/your-username/youtube-clone.git)
+cd youtube-clone
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Install dependenciesBashnpm install
 
-### Advanced Configuration
+3. Configure API KeysTo fetch real data, you need a YouTube Data API key.Go to the Google Cloud Console.Enable YouTube Data API v3.Create an API Key.Create a file src/utils/constants.js and add the following:JavaScript// src/utils/constants.js
+export const GOOGLE_API_KEY = "YOUR_GENERATED_KEY_HERE";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+export const YOUTUBE_VIDEOS_API = "[https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=](https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=)" + GOOGLE_API_KEY;
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. Start the development serverBashnpm start
+Runs the app in the development mode.Open http://localhost:3000 to view it in your browser.🤝 ContributingContributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.Fork the ProjectCreate your Feature Branch (git checkout -b feature/AmazingFeature)Commit your Changes (git commit -m 'Add some AmazingFeature')Push to the Branch (git push origin feature/AmazingFeature)Open a Pull Request📄 LicenseThis project is for learning and educational purposes only.All trademarks, logos, and brand names are the property of their respective owners.
